@@ -20,7 +20,7 @@ export const sampleProducts : Product[] = [
         category: "Apparel",
         price: 19.99,
         brand: "Adidas",
-        countInStock: 50,
+        countInStock:0,
         description: "Breathable fabric for active wear.",
         rating: 4.2,
         numReviews: 80

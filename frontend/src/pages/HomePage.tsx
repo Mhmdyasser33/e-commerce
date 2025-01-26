@@ -8,6 +8,8 @@ import { getError } from "../helpers/getErrors";
 import { ApiError } from "../types/ApiError";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import Rating from "../components/Rating";
+import ProductItem from "../components/ProductItem";
 
 
 type State =  {
@@ -38,6 +40,8 @@ type Action =
     }
   }
 export default function HomePage() {
+
+  
   const [{error , loading , products} , dispatch] = useReducer<React.Reducer<State,Action>>(reducer , initialState);
   useEffect(()=>{
     const fetchData = async()=>{
@@ -50,23 +54,16 @@ export default function HomePage() {
        }
     }
     fetchData() ;
-  },[])
-     
+  },[]) 
+
   return (
     loading ? (<LoadingBox/>) : error ? (<MessageBox variant="danger">{error}</MessageBox>) : (
- <Row>
-          {sampleProducts.map((product)=>(
+        <Row>
+          {products.map((product)=>(
             <Col key={product.slug} sm={6} md={4} lg={3}>
-                <Link to={`/product/`+product.slug}>
-                <img src={product.image}
-                alt={product.name} 
-                className="product-image"/>
-                <h2>{product.name}</h2>
-                <p>${product.price}</p>
-                </Link>
+              <ProductItem product={product}/>
             </Col>
           ))}
-          
         </Row> 
     )
   )
