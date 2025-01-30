@@ -15,6 +15,10 @@ app.get("/api/products" , (req : express.Request , res : express.Response)=>{
     res.json(sampleProducts);
 })
 
+app.get("/api/products/:slug" , (req : express.Request , res : express.Response) =>{
+    res.json(sampleProducts.find((product) => product.slug === req.params.slug))
+})
+
 app.listen(port , ()=>{
     console.log(`server start at http://localhost:${port}`) ; 
 })

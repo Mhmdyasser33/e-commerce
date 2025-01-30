@@ -1,14 +1,7 @@
 import { Col, Row } from "react-bootstrap";
-import { sampleProducts } from "../data";
-import { Link } from "react-router-dom";
-import { Product } from "../types/Product";
-import { useEffect, useReducer } from "react";
-import axios from "axios";
 import { getError } from "../helpers/getErrors";
-import { ApiError } from "../types/ApiError";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import Rating from "../components/Rating";
 import ProductItem from "../components/ProductItem";
 import { Helmet } from "react-helmet-async";
 import { useGetProductQuery } from "../hooks/productHook";
@@ -21,7 +14,7 @@ export default function HomePage() {
   const {data : products , isLoading , error} = useGetProductQuery() ; 
 
   return (
-    isLoading ? (<LoadingBox/>) : error ? (<MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>) : (
+    isLoading ? (<LoadingBox/>) : error ? (<MessageBox variant="danger">{error instanceof Error ? error.message : getError(error)}</MessageBox>) : (
         <Row>
           <Helmet>
             <title> Amazon clone</title>
