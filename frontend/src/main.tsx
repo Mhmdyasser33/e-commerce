@@ -9,6 +9,7 @@ import App from './App.tsx'
 import HomePage from "./pages/HomePage.tsx"
 import ProductPage from './pages/ProductPage.tsx';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { StoreProvider } from './context/index.tsx';
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<App/>}>
       <Route index={true} element={<HomePage/>}/> 
@@ -18,11 +19,13 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 const queryClient = new QueryClient() ; 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+   <StoreProvider>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
      <RouterProvider router={router}/>
        <ReactQueryDevtools initialIsOpen={false}/>
       </QueryClientProvider>
-    </HelmetProvider>  
+    </HelmetProvider>
+    </StoreProvider>  
   </StrictMode>,
 )

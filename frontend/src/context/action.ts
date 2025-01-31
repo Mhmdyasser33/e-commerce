@@ -1,0 +1,1 @@
+export type ACTION = {type : "SWITCH_MODE"}
