@@ -5,6 +5,7 @@ import Rating from "./Rating";
 
 
 export default function ProductItem({product} : {product : Product}) {
+  console.log(product)
   return (
     <Card>
       <Link to={`/product/${product.slug}`}>

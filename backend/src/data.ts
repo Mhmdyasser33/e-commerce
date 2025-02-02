@@ -23,7 +23,7 @@ export const sampleProducts : Product[] = [
         countInStock:0,
         description: "Breathable fabric for active wear.",
         rating: 4.2,
-        numReviews: 80
+       numReviews: 80
     },
     {
         name: "Black Backpack",
@@ -35,7 +35,7 @@ export const sampleProducts : Product[] = [
         countInStock: 15,
         description: "Spacious and durable backpack for daily use.",
         rating: 4.8,
-        numReviews: 200
+       numReviews: 200
     },
     
       {
@@ -48,7 +48,7 @@ export const sampleProducts : Product[] = [
           countInStock: 25,
           description: "A stylish and versatile backpack perfect for everyday use.",
           rating: 4.5,
-          numReviews: 150
+         numReviews: 150
       }
     
 ]

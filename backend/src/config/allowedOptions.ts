@@ -1,4 +1,4 @@
-import { corsCallback } from "types/corsCallbackType";
+import { corsCallback } from "../types/corsCallbackType";
 import {allowedOrigin} from "../config/allowedOrigin";
 
 

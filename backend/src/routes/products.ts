@@ -5,6 +5,6 @@ const router = express.Router() ;
 
 export default(router : express.Router)=>{
     router.get("/api/products" , getAllProducts) ; 
-    router.get("/api/products/:slug" , getProductBySlug)
+    router.get("/api/products/slug/:slug" , getProductBySlug)
 }
 
