@@ -7,7 +7,20 @@ export const initialState : AppState = {
     ? localStorage.getItem('mode')!
     : window.matchMedia && window.matchMedia('(prefers-color-scheme : dark)').matches
     ? 'dark' 
-    : 'light'
+    : 'light',
+    cart : {
+        cartItems : localStorage.getItem("cartItem")
+         ? JSON.parse(localStorage.getItem("cartItem")!)
+          : [],
+        shippingAddress : localStorage.getItem("shippingAddress") ? 
+        JSON.parse(localStorage.getItem("shippingAddress")!) : {},
+        paymentMethod  : localStorage.getItem("paymentMethod") ?
+        localStorage.getItem("paymentMethod")! : 'payPal' , 
+        itemPrice : 0,
+        taxPrice : 0, 
+        shippingPrice : 0,
+        totalPrice : 0
+    }
 }
 
 export const defaultDispatch : React.Dispatch<ACTION> = ()=> initialState;

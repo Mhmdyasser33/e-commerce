@@ -1,4 +1,6 @@
+import { cart } from "../types/Cart"
 
 export type AppState = {
-    mode : string 
+    mode : string ,
+    cart : cart
 }
