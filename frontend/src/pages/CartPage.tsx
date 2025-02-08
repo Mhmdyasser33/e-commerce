@@ -25,7 +25,6 @@ export default function CartPage() {
         dispatch({type : "REMOVE_CART_ITEM" , payload : item}) ; 
         toast.success("product removed successfully") ; 
     }
-  
     return(
         <div>
        <Helmet>
