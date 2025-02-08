@@ -10,10 +10,12 @@ import HomePage from "./pages/HomePage.tsx"
 import ProductPage from './pages/ProductPage.tsx';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { StoreProvider } from './context/index.tsx';
+import CartPage from './pages/CartPage.tsx';
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<App/>}>
       <Route index={true} element={<HomePage/>}/> 
       <Route path='/product/:slug' element={<ProductPage/>}/>
+      <Route path='/cart' element={<CartPage/>}/>
     </Route>
  ))
 const queryClient = new QueryClient() ; 

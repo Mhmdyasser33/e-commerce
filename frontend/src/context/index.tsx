@@ -17,6 +17,11 @@ const reducer = (state : AppState , action : ACTION) =>{
             localStorage.setItem('cartItems' , JSON.stringify(cartItems));
             return {...state , cart : {...state.cart , cartItems}} ;
         }
+        case "REMOVE_CART_ITEM":{
+            const newCartItems = state.cart.cartItems.filter((item : cartItem)=> item._id !== action.payload._id) ; 
+            localStorage.setItem("cartItems" , JSON.stringify(newCartItems));
+            return {...state , cart : {...state.cart ,cartItems : newCartItems}}
+        }
         default:
             return state;
     }

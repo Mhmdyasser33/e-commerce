@@ -24,6 +24,10 @@ img.large{
  max-width: 100%; 
 }
 
+.img-thumbnail{
+  width : 90px;
+}
+
 a{
   text-decoration: none;
 }

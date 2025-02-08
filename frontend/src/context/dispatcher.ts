@@ -9,8 +9,8 @@ export const initialState : AppState = {
     ? 'dark' 
     : 'light',
     cart : {
-        cartItems : localStorage.getItem("cartItem")
-         ? JSON.parse(localStorage.getItem("cartItem")!)
+        cartItems : localStorage.getItem("cartItems")
+         ? JSON.parse(localStorage.getItem("cartItems")!)
           : [],
         shippingAddress : localStorage.getItem("shippingAddress") ? 
         JSON.parse(localStorage.getItem("shippingAddress")!) : {},

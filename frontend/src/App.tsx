@@ -26,15 +26,15 @@ function App() {
             <Button value={mode} onClick={toggleThemeHandler}>
             <i className={mode === 'light' ? 'fa fa-sun' : 'fa fa-moon'}></i>
             </Button>
-            <Nav.Link href='/cart'> 
+            <Link to='/cart' className="nav-link"> 
             Cart 
             {cart.cartItems.length > 0 &&(
               <Badge pill bg="danger">
                 {cart.cartItems.reduce((acc , cuu) => acc + cuu.quantity,0)}
               </Badge>
             )}
-            </Nav.Link>
-            <Nav.Link href="/signin"> Sign In </Nav.Link>
+            </Link>
+            <Link to="/signin" className="nav-link"> Sign In </Link>
            </Nav>
         </Navbar>
       </header>
