@@ -22,6 +22,32 @@ const reducer = (state : AppState , action : ACTION) =>{
             localStorage.setItem("cartItems" , JSON.stringify(newCartItems));
             return {...state , cart : {...state.cart ,cartItems : newCartItems}}
         }
+        case "USER_SIGNIN" : 
+        return {...state , userInfo : action.payload} ;
+        case "USER_LOGOUT":{
+            return {
+                 mode : localStorage.getItem('mode')
+    ? localStorage.getItem('mode')!
+    : window.matchMedia && window.matchMedia('(prefers-color-scheme : dark)').matches
+    ? 'dark' 
+    : 'light',
+    cart : {
+        cartItems : [],
+        paymentMethod : "payPal",
+         shippingAddress : {
+             fullName : "",
+             address : "",
+             city : "",
+             country : "",
+             postalCode : ""
+         },
+        itemPrice : 0,
+        taxPrice : 0, 
+        shippingPrice : 0,
+        totalPrice : 0
+    }
+            }
+        }
         default:
             return state;
     }

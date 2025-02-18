@@ -31,3 +31,35 @@ img.large{
 a{
   text-decoration: none;
 }
+
+.small-container{
+  max-width: 500px;
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
+
+.top-50 {
+    top: 50% !important;
+}
+
+.start-50 {
+    left: 50% !important;
+}
+
+.translate-middle {
+    transform: translate(-50%, -50%) !important;
+}
+
+.opacity-0 {
+    opacity: 0 !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}

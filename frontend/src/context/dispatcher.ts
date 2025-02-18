@@ -3,6 +3,9 @@ import { AppState } from "./types";
 
 
 export const initialState : AppState = {
+    userInfo : localStorage.getItem("userInfo") ? 
+    JSON.parse(localStorage.getItem("userInfo")!) 
+    : null,
     mode : localStorage.getItem('mode')
     ? localStorage.getItem('mode')!
     : window.matchMedia && window.matchMedia('(prefers-color-scheme : dark)').matches

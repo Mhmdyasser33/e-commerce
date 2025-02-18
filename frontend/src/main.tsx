@@ -11,11 +11,16 @@ import ProductPage from './pages/ProductPage.tsx';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { StoreProvider } from './context/index.tsx';
 import CartPage from './pages/CartPage.tsx';
+import SigninPage from './pages/SigninPage.tsx';
+/* import Test from './testConcept/Test.tsx';
+ */
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<App/>}>
       <Route index={true} element={<HomePage/>}/> 
       <Route path='/product/:slug' element={<ProductPage/>}/>
       <Route path='/cart' element={<CartPage/>}/>
+       <Route path='signin' element={<SigninPage/>}/>
+    {/*    <Route path='/test' element={<Test/>}/>  */}
     </Route>
  ))
 const queryClient = new QueryClient() ; 
