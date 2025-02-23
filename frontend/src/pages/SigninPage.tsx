@@ -20,13 +20,26 @@ export default function SigninPage() {
     const [email , setEmail] = useState('') ; 
     const [password , setPassword] = useState('') ;
     const {state : {userInfo}, dispatch} = useContext(Store) ; 
+    const trimmedEmail = email?.trim().toLowerCase() ;
+    const trimmedPassword = password?.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     const { mutateAsync : signin , isPending} = UseSigninMutation(); // rename mutateAsync with signin name 
 
     const submitHandler = async(e : React.SyntheticEvent)=>{
         e.preventDefault() ; 
+        if(!trimmedEmail || !trimmedPassword){
+            toast.error("All field are required") ; 
+            return;
+        }
+        if(!emailRegex.test(trimmedEmail)){
+            toast.error("Invalid email format") ; 
+            return ;
+        }
          try{
             const data = await signin({
-                email , password
+                email : trimmedEmail ,
+                 password : trimmedPassword
             })
             localStorage.setItem("userInfo" , JSON.stringify(data)) ;   
             dispatch({type : "USER_SIGNIN" , payload : data})
@@ -49,7 +62,7 @@ export default function SigninPage() {
             <h1 className="my-3">Sign in </h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Email </Form.Label>
+                    <Form.Label> Email </Form.Label>
                     <Form.Control 
                         type="email" 
                         required 
