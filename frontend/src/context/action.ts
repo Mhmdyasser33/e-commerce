@@ -1,4 +1,4 @@
-import { cartItem } from "../types/Cart";
+import { cartItem, shippingAddress } from "../types/Cart";
 import { UserInfo } from "../types/UserInfo";
 
 
@@ -7,4 +7,5 @@ export type ACTION =
 | {type : "ADD_CART_ITEM" , payload : cartItem}
 | {type : "REMOVE_CART_ITEM" , payload : cartItem}
 | {type : "USER_SIGNIN" , payload : UserInfo}
-| {type : "USER_LOGOUT"}
+| {type : "USER_LOGOUT"} 
+| {type : "SAVE_SHIPPING_ADDRESS" , payload : shippingAddress}

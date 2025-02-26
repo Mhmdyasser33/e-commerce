@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async';
 import 'bootstrap/dist/css/bootstrap.min.css' ; 
-import './index.css'
 import {createBrowserRouter , createRoutesFromElements , Route , RouterProvider} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; 
 import App from './App.tsx'
@@ -13,6 +12,8 @@ import { StoreProvider } from './context/index.tsx';
 import CartPage from './pages/CartPage.tsx';
 import SigninPage from './pages/SigninPage.tsx';
 import SignupPage from './pages/SignupPage.tsx';
+import ShippingAddressPage from './pages/ShippingAddressPage.tsx';
+import './index.css'
 /* import Test from './testConcept/Test.tsx';
  */
   const router = createBrowserRouter(createRoutesFromElements(
@@ -21,7 +22,8 @@ import SignupPage from './pages/SignupPage.tsx';
       <Route path='/product/:slug' element={<ProductPage/>}/>
       <Route path='/cart' element={<CartPage/>}/>
        <Route path='signin' element={<SigninPage/>}/>
-        <Route path='signup' element={<SignupPage/>}/>
+       <Route path='signup' element={<SignupPage/>}/>
+       <Route path='shipping' element={<ShippingAddressPage/>}/>
     {/*    <Route path='/test' element={<Test/>}/>  */}
     </Route>
  ))

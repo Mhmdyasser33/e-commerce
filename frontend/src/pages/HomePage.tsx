@@ -6,10 +6,6 @@ import ProductItem from "../components/ProductItem";
 import { Helmet } from "react-helmet-async";
 import { useGetProductQuery } from "../hooks/productHook";
 
-
-
-
-
 export default function HomePage() {
   const {data : products , isLoading , error} = useGetProductQuery() ; 
 
@@ -17,7 +13,7 @@ export default function HomePage() {
     isLoading ? (<LoadingBox/>) : error ? (<MessageBox variant="danger">{error instanceof Error ? error.message : getError(error)}</MessageBox>) : (
         <Row>
           <Helmet>
-            <title> Amazon clone</title>
+            <title> RegalMart</title>
             <meta name="description" content="This is the homepage for the e-commerce"/>
           </Helmet>
           {products!.map((product)=>(

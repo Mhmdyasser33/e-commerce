@@ -23,7 +23,6 @@ export default function CartPage() {
     }
     const handleDeleteCartItem = (item : cartItem)=>{
         dispatch({type : "REMOVE_CART_ITEM" , payload : item}) ; 
-        toast.success("product removed successfully") ; 
     }
     return(
         <div>
