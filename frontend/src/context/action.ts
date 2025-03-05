@@ -9,3 +9,4 @@ export type ACTION =
 | {type : "USER_SIGNIN" , payload : UserInfo}
 | {type : "USER_LOGOUT"} 
 | {type : "SAVE_SHIPPING_ADDRESS" , payload : shippingAddress}
+| {type : "SAVE_PAYMENT_METHOD" , payload : string}

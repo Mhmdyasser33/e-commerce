@@ -7,6 +7,7 @@ import { cartItem } from "../types/Cart";
 const reducer = (state : AppState , action : ACTION) =>{
     switch(action.type){
         case "SWITCH_MODE":
+            localStorage.setItem("mode" , state.mode === 'dark' ? 'light' : "dark");
             return {...state,mode : state.mode === 'dark' ? 'light' : 'dark'}
             // when include declare variable with const we should put this code inside {}
         case "ADD_CART_ITEM":{
@@ -50,6 +51,8 @@ const reducer = (state : AppState , action : ACTION) =>{
         }
     case "SAVE_SHIPPING_ADDRESS":
         return{...state , cart : {...state.cart , shippingAddress : action.payload}}
+    case "SAVE_PAYMENT_METHOD": 
+      return {...state , cart : {...state.cart , paymentMethod : action.payload}}
         default:
             return state;
     }

@@ -14,6 +14,7 @@ import SigninPage from './pages/SigninPage.tsx';
 import SignupPage from './pages/SignupPage.tsx';
 import ShippingAddressPage from './pages/ShippingAddressPage.tsx';
 import './index.css'
+import PaymentMethodPage from './pages/PaymentMethodPage.tsx';
 /* import Test from './testConcept/Test.tsx';
  */
   const router = createBrowserRouter(createRoutesFromElements(
@@ -24,6 +25,7 @@ import './index.css'
        <Route path='signin' element={<SigninPage/>}/>
        <Route path='signup' element={<SignupPage/>}/>
        <Route path='shipping' element={<ShippingAddressPage/>}/>
+       <Route path='payment' element={<PaymentMethodPage/>}/>
     {/*    <Route path='/test' element={<Test/>}/>  */}
     </Route>
  ))

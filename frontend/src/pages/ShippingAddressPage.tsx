@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet-async";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Button, Form } from "react-bootstrap";
 
-
 export default function ShippingAddressPage() {
     const navigate = useNavigate() ; 
     const {state , dispatch} = useContext(Store) ; 
