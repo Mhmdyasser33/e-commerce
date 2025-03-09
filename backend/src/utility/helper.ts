@@ -1,6 +1,7 @@
 import { User } from "../models/users";
 import jwt from "jsonwebtoken"
 import express from "express"
+import "../types/Request"
 export const generateToken = (user : User) =>{
    return jwt.sign(
         {
@@ -28,7 +29,6 @@ export const isUserAuthenticated = (req : express.Request , res : express.Respon
                 jwtToken,
                 process.env.MY_SECRET_KEY || "fake_#@#(*(!aq__$#$%F"
             );
-            console.log(decoded)
             next();
          }catch(error){
             res.status(401).json({message : "Invalid token"}) ; 

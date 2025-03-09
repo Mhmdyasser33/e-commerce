@@ -1,5 +1,5 @@
 import express from "express" ; 
-import { getAllProducts, getProductBySlug } from "../controllers/productController";
+import { getAllProducts, getProductBySlug } from "../../controllers/productController";
 
 
 
