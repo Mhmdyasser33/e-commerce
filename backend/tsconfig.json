@@ -8,7 +8,9 @@
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata" : true,
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+     "types": ["node", "express"]
+
   },
   "include": ["src/**/*"]
 }

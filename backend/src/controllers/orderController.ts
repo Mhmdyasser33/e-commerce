@@ -1,7 +1,8 @@
 import express from "express"
 import { OrderModel } from "../models/order";
 import { Product } from "models/products";
-export const handleOrder = async(req : express.Request , res : express.Response)=>{
+import { Request , Response } from "express";
+export const handleOrder = async(req : Request , res : Response)=>{
  try{
    if(req.body.orderItems.length === 0){
     res.status(400).json({message : "Cart is empty"}) ; 

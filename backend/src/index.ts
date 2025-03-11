@@ -3,6 +3,7 @@ dotenv.config();
 import express, { urlencoded } from "express";
 import router from "./routes/products";
 import seeds from "./seeds";
+import "./types/Request"
 import { dbConnect } from "./config/dbConnect";
 import cors from "cors";
 import { corsOptions } from "./config/allowedOptions";

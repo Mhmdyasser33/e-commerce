@@ -1,7 +1,6 @@
 import { User } from "../models/users";
 import jwt from "jsonwebtoken"
-import express from "express"
-import "../types/Request"
+import { Request , Response, NextFunction } from "express";
 export const generateToken = (user : User) =>{
    return jwt.sign(
         {
@@ -17,7 +16,7 @@ export const generateToken = (user : User) =>{
     )
 }
 /* create isAuth MiddleWare */
-export const isUserAuthenticated = (req : express.Request , res : express.Response , next : express.NextFunction)=>{
+export const isUserAuthenticated = (req : Request , res : Response , next :NextFunction)=>{
     const {authorization} = req.headers ; 
     if(!authorization){
         res.status(401).json({message : "No token provided"});
@@ -29,6 +28,14 @@ export const isUserAuthenticated = (req : express.Request , res : express.Respon
                 jwtToken,
                 process.env.MY_SECRET_KEY || "fake_#@#(*(!aq__$#$%F"
             );
+
+           (req as any).user = decoded as {
+              _id: string;
+              name: string;
+              email: string;
+              isAdmin: boolean;
+              token: string;
+            };
             next();
          }catch(error){
             res.status(401).json({message : "Invalid token"}) ; 
