@@ -47,11 +47,11 @@
     @prop()
     public emailAddress!: string;
   }
-  @ModelOptions({ schemaOptions: { timestamps: true } })
+  @ModelOptions({ schemaOptions: { timestamps: true }},)
   export class Order {
     public _id!: string;
-    @prop()
-    public orderItems: Item[];
+    @prop({type : ()=> [Item] , required : true})
+    public orderItems!: Item[];
     @prop()
     public shippingAddress?: ShippingAddress;
 
@@ -79,6 +79,7 @@
     public isDelivered!: boolean;
     @prop()
     public deliveredAt!: Date;
+   
   }
 
   export const OrderModel = getModelForClass(Order);
