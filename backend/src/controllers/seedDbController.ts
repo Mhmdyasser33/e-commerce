@@ -1,9 +1,9 @@
+import { Request , Response } from "express";
 import { sampleProducts, sampleUsers } from "../data";
-import express from "express" ;
 import { productModel } from "../models/products";
 import { UserModel } from "../models/users";
 
-export const seedDB = async (req : express.Request , res : express.Response)=>{
+export const seedDB = async (req : Request , res : Response)=>{
     try{
     await productModel.deleteMany({}) ; // remove all data in db 
     const createdProducts = await productModel.insertMany(sampleProducts);
@@ -11,8 +11,9 @@ export const seedDB = async (req : express.Request , res : express.Response)=>{
     await UserModel.deleteMany({}) ;
     const createdUsers = await UserModel.insertMany(sampleUsers) ;
     res.json({createdProducts , createdUsers});
+    return;
     }catch(error){
-        console.log(`Error in seeding db`) ;
-        res.sendStatus(500); 
-    }
+        res.status(500).json({message : `Error in seeding db ${error.message}`});
+        return ;
+        }
 }
