@@ -20,7 +20,7 @@ export const createNewCustomerOrder = async (req: Request, res: Response) => {
         totalPrice: req.body.totalPrice,
         paymentMethod: req.body.paymentMethod,
       });
-      res.status(201).json({ message: "Order created", order: createdOrder });
+      res.status(201).json({order: createdOrder });
       return;
     }
   } catch (error) {

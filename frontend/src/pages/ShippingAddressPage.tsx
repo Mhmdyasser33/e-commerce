@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext,useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { Store } from "../context";
 import { Helmet } from "react-helmet-async";
@@ -8,13 +8,8 @@ import { Button, Form } from "react-bootstrap";
 export default function ShippingAddressPage() {
     const navigate = useNavigate() ; 
     const {state , dispatch} = useContext(Store) ; 
-    const {userInfo , cart : {shippingAddress}} = state;
-    // handle part of user not found or not sign in 
-    useEffect(()=>{
-        if(!userInfo){
-            navigate('/signin?redirect=/shipping') ;
-        }
-    },[navigate , userInfo])
+    const {cart : {shippingAddress}} = state;
+ 
     const [fullName , setFullName] = useState(shippingAddress.fullName || '') ; 
     const [address , setAddress] = useState(shippingAddress.address || '') ; 
     const [city , setCity] = useState(shippingAddress.city || '') ; 

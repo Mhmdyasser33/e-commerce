@@ -1,7 +1,7 @@
 import { Product } from "./types/Product";
 
 export const sampleProducts : Product[] = [
-    {
+    {     
         name: "Blue Running Shoes",
         slug: "blue-running-shoes",
         image : "../public/images/p1.jpg",

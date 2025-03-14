@@ -8,7 +8,6 @@ import { Badge, Button, Card, Col, ListGroup, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useContext } from "react";
 import { Store } from "../context";
-import { toast } from "react-toastify";
 
 
 
@@ -26,7 +25,6 @@ export default function ProductPage() {
       return;
     }
     dispatch({type : "ADD_CART_ITEM",payload : {...convertProductToCartItem(product!),quantity}})
-    toast.success("Product add to cart");
     navigate("/cart")
   }
   return (

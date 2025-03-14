@@ -12,20 +12,15 @@ export default function SigninPage() {
     const navigate = useNavigate() ; 
     // here will give me data after query string ? 
     const { search } = useLocation() ;
-    console.log(search);
     // it return thr value that have key redirect like this redirect = '/cart' res -> /cart 
     const redirectUrl = new URLSearchParams(search).get('redirect') ; 
-    console.log(redirectUrl)
     const redirect = redirectUrl ? redirectUrl : "/" ; 
     const [email , setEmail] = useState('') ; 
     const [password , setPassword] = useState('') ;
     const {state : {userInfo}, dispatch} = useContext(Store) ; 
     const trimmedEmail = email?.trim().toLowerCase() ;
-    const trimmedPassword = password?.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+    const trimmedPassword = password?.trim();    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const { mutateAsync : signin , isPending} = UseSigninMutation(); // rename mutateAsync with signin name 
-
     const submitHandler = async(e : React.SyntheticEvent)=>{
         e.preventDefault() ; 
         if(!trimmedEmail || !trimmedPassword){

@@ -22,7 +22,6 @@ export const isUserAuthenticated = (req : Request , res : Response , next :NextF
         res.status(401).json({message : "No token provided"});
     }else{
          const jwtToken =authorization.slice(7 , authorization.length); // remove Bearer prefix and space after Bearer to get only the token ...
-         console.log(jwtToken);
          try{
             const decoded = jwt.verify(
                 jwtToken,

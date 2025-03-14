@@ -6,6 +6,7 @@ export type ACTION =
 | {type : "SWITCH_MODE"}
 | {type : "ADD_CART_ITEM" , payload : cartItem}
 | {type : "REMOVE_CART_ITEM" , payload : cartItem}
+| {type : "CLEAR_CART"}
 | {type : "USER_SIGNIN" , payload : UserInfo}
 | {type : "USER_LOGOUT"} 
 | {type : "SAVE_SHIPPING_ADDRESS" , payload : shippingAddress}

@@ -6,11 +6,13 @@ import { useContext } from "react";
 import { Store } from "../context";
 import { cartItem } from "../types/Cart";
 import { convertProductToCartItem } from "../helpers/getErrors";
-import { toast } from "react-toastify";
 
 
 export default function ProductItem({product} : {product : Product}) {
  const {state : {cart : {cartItems}} , dispatch} = useContext(Store) ;
+  if(!product){
+    return null ;
+   }
  const addToCardHandler = (item : cartItem)=>{
   const existItem = cartItems.find((productItem) => productItem._id === product!._id) ;
   const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -19,8 +21,6 @@ export default function ProductItem({product} : {product : Product}) {
     return ;
   }
   dispatch({type : 'ADD_CART_ITEM',payload : {...item , quantity}})
-  toast.success("Product add to cart");
-
  }
 
   return (

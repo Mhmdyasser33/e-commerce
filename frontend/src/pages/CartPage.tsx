@@ -17,6 +17,7 @@ export default function CartPage() {
             return;
         }
         dispatch({type : "ADD_CART_ITEM" , payload : {...item , quantity}}); // keep save all value inly quantity change based on user click..
+        localStorage.setItem("cartItem" , JSON.stringify(item));
     }
     const handelCheckoutHandler = ()=>{
      navigate('/signin/?redirect=/shipping') ; 
