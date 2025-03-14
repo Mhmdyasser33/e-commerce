@@ -60,7 +60,7 @@ export default function CartPage() {
                  </Button> 
                 </Col>
                 <Col>
-                <span>${item.price}</span>
+                <span>${item.price.toFixed(2)}</span>
                 </Col>
                 <Col>
                 <Button
@@ -82,7 +82,7 @@ export default function CartPage() {
            <h3>
             {/* to calc num of items user add to cart  */}
             Subtotal ({cartItems.reduce((acc , curr)=> acc + curr.quantity,0)} {' '} items)
-            : $ {cartItems.reduce((acc , curr)=> acc + (curr.price * curr.quantity),0)} 
+            : $ {(cartItems.reduce((acc , curr)=> acc + (curr.price * curr.quantity),0) + Number.EPSILON).toFixed((2))} 
            </h3>
             </ListGroup>
             <ListGroup>
