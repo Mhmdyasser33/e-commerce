@@ -14,29 +14,31 @@ export default function PlaceOrderPage() {
     const navigate = useNavigate() ; 
     const {state , dispatch} = useContext(Store);
     const {cart} = state ;
-
+    const FREE_SHIPPING_THRESHOLD = 100;
+    const BASE_SHIPPING_RATE = 10;
     const roundNumToTwoScale = (num : number) => Math.round(num * 100 + Number.EPSILON) / 100 ;
     const itemPriceFun = cart.cartItems.reduce((prev , acc)=> prev + acc.quantity * acc.price , 0 ) ;
-    cart.itemPrice  = roundNumToTwoScale(itemPriceFun);
-    cart.shippingPrice = cart.itemPrice > 100 ? roundNumToTwoScale(0) : roundNumToTwoScale(10);
+    cart.itemPrice =  roundNumToTwoScale(itemPriceFun);
+    cart.shippingPrice = cart.itemPrice >= FREE_SHIPPING_THRESHOLD ? roundNumToTwoScale(0) : roundNumToTwoScale(BASE_SHIPPING_RATE);
     cart.taxPrice = roundNumToTwoScale(0.15 * cart.itemPrice);
-    cart.totalPrice = cart.itemPrice + cart.shippingPrice + cart.taxPrice; 
+    cart.totalPrice =  cart.itemPrice + cart.shippingPrice + cart.taxPrice
+    
     
    const {mutateAsync : createOrder , isPending} = useCreateOrderMutations();
 
    const placeOrderHandler = async()=>{
     try{
-         const data = await createOrder({
-        orderItems :  cart.cartItems,
-        shippingAddress : cart.shippingAddress,
-        paymentMethod : cart.paymentMethod,
-        itemPrice : cart.itemPrice,
-        shippingPrice : cart.shippingPrice,
-        taxPrice : cart.taxPrice,
-        totalPrice : cart.taxPrice
-    })
+        const data = await createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemPrice: cart.itemPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
         dispatch({type : "CLEAR_CART"})
-        localStorage.removeItem("cartItems");
+        // localStorage.removeItem("cartItems");
         navigate(`/order/${data.order._id}`)
     }catch(error){
       toast.error(getError(error as ApiError));
@@ -76,34 +78,42 @@ export default function PlaceOrderPage() {
                     <Link to={'/payment'}>Edit</Link>
                 </Card.Body>
              </Card>
-             <Card>
-                <Card.Body>
-                    <Card.Title>Items</Card.Title>
-                    <ListGroup variant="flush">
-                        {cart.cartItems.map((item)=>(
-                            <ListGroup.Item key={item._id}>
-                                <Row className="align-items-center">
-                                    <Col md={6}>
-                                    <img 
-                                    className="rounded img-thumbnail"
-                                    src={item.image}
-                                    alt={item.name}>
-                                    </img>{' '}
-                                    <Link to={`/product/${item.slug}`}>{item.name}</Link>
-                                    </Col>
-                                    <Col md={3}>
-                                    <span>{item.quantity}</span>
-                                    </Col>
-                                    <Col md={3}>
-                                    <span>${item.price}</span>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                        ))}
-                    </ListGroup>
-                     <Link to={'/cart'}>Edit</Link>
-                </Card.Body>
-             </Card>
+           <Card>
+  <Card.Body>
+    <Card.Title>Items</Card.Title>
+    <ListGroup 
+      variant="flush"
+      style={{ 
+        maxHeight: '158px', 
+        overflowY: 'auto',
+      }}
+    >
+      {cart.cartItems.map((item)=>(
+        <ListGroup.Item key={item._id}>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <img 
+                className="rounded img-thumbnail"
+                src={item.image}
+                alt={item.name}
+                style={{ maxWidth: '80px', maxHeight: '80px'}}
+              >
+              </img>{' '}
+              <Link to={`/product/${item.slug}`}>{item.name}</Link>
+            </Col>
+            <Col md={3}>
+              <span>{item.quantity}</span>
+            </Col>
+            <Col md={3}>
+              <span>${item.price}</span>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
+    <Link to={'/cart'}>Edit</Link>
+  </Card.Body>
+</Card>
             </Col>
             <Col md={4}> 
             <Card>
@@ -163,7 +173,6 @@ export default function PlaceOrderPage() {
                   </div>
                 </Card.Body>
             </Card>
-            
             </Col>
         </Row>
     </div>

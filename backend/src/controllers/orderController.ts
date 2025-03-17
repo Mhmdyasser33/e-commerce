@@ -15,7 +15,7 @@
           })),
           shippingAddress: req.body.shippingAddress,
           shippingPrice: req.body.shippingPrice,
-          itemsPrice: req.body.itemsPrice,
+          itemPrice: req.body.itemPrice,
           taxPrice: req.body.taxPrice,
           totalPrice: req.body.totalPrice,
           paymentMethod: req.body.paymentMethod,
@@ -30,22 +30,19 @@
     
     }
   };
+ 
 
-  export const getOrderById = async(req : Request , res : Response)=>{
-    const { id } = req.params;
-    console.log(id)
-    try{
-      const order = await OrderModel.findById(id) ;
-      console.log(order);
+export const getOrderDetailsById = async(req : Request , res : Response)=>{
+  try{
+      const {id : orderId} = req.params;
+      const order = await OrderModel.findById(orderId) ; 
       if(order){
-        res.status(200).json(order);
-        return;
+        res.status(200).json(order) ;
       }else{
-        res.status(404).json({message : "Order Not Found"}) ; 
-        return ;
+        res.status(404).json({message : "Order  Not Found"})
       }
     }catch(error){
-      res.status(500).json({message : `Internal Server Error ${error.message}` });
-      return ;
-    }
+      res.status(500).json({message : "Internal Server Error" + error})
   }
+
+}

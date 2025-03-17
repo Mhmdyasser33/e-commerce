@@ -17,6 +17,7 @@ import './index.css'
 import PaymentMethodPage from './pages/PaymentMethodPage.tsx';
 import ProtectedRoute from './components/ProtectedRoute.tsx';
 import PlaceOrderPage from './pages/PlaceOrderPage.tsx';
+import OrderPageDetails from './pages/OrderPageDetails.tsx';
 /* import Test from './testConcept/Test.tsx';
  */
   const router = createBrowserRouter(createRoutesFromElements(
@@ -30,6 +31,7 @@ import PlaceOrderPage from './pages/PlaceOrderPage.tsx';
        <Route path='shipping' element={<ShippingAddressPage/>}/>
        <Route path='payment' element={<PaymentMethodPage/>}/>
        <Route path='placeorder' element={<PlaceOrderPage/>}/>
+       <Route path='/order/:id' element={<OrderPageDetails/>}/>
        </Route>
     </Route>
  ))
