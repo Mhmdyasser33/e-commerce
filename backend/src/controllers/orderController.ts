@@ -1,7 +1,7 @@
 
   import { OrderModel } from "../models/order";
   import { Product } from "../models/products";
-  import { Request, Response } from "express";
+  import { json, Request, Response } from "express";
   export const createNewCustomerOrder = async (req: Request, res: Response) => {
     try {
       if (req.body.orderItems.length === 0) {
@@ -43,6 +43,33 @@ export const getOrderDetailsById = async(req : Request , res : Response)=>{
       }
     }catch(error){
       res.status(500).json({message : "Internal Server Error" + error})
+  }
+}
+
+export const updateOrderDetailsAfterPayment = async (req : Request , res : Response)=>{
+  try{
+     const { id : orderId} = req.params ; 
+     const order = await OrderModel.findById(orderId) ; 
+     if(order){
+      order.isPaid = true;
+      order.paidAt = new Date(Date.now())
+      order.paymentResult = {
+        paymentId : req.body.paymentId,
+        status : req.body.status,
+        update_time : req.body.update_time,
+        email_address : req.body.email_address
+      }
+
+      const updatedOrder = await order.save();
+     res.status(200).json({message : "order payed successfully" , updatedOrder})
+     return;
+    }else{
+      res.status(404).json({message : "Order Not Found"})
+      return;
+    }
+  }catch(error){
+   res.status(500).json({message : `Internal server error ${error.message}`})
+   return;
   }
 
 }

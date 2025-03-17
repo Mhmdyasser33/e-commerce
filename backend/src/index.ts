@@ -9,6 +9,7 @@ import cors from "cors";
 import { corsOptions } from "./config/allowedOptions";
 import users from "./routes/users/index";
 import orders from "./routes/orders/index";
+import paypal from "./routes/paypal";
 
 const port = process.env.PORT || 4000;
 const app = express();
@@ -20,6 +21,7 @@ app.use("/", router());
 app.use("/", seeds());
 app.use("/", users());
 app.use("/", orders());
+app.use("/" , paypal())
 app.listen(port, () => {
   console.log(`server start at http://localhost:${port}`);
 });
