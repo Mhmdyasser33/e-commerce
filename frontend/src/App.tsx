@@ -81,7 +81,7 @@ function App() {
       </main>
       <footer className="mt-auto">
         <div className="text-center py-3">
-          All rights reserved
+        <span> &copy; 2025 RegalMart Shop. All rights reserved.</span>
         </div>
       </footer>
     </div>

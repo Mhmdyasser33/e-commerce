@@ -18,6 +18,7 @@ import PaymentMethodPage from './pages/PaymentMethodPage.tsx';
 import ProtectedRoute from './components/ProtectedRoute.tsx';
 import PlaceOrderPage from './pages/PlaceOrderPage.tsx';
 import OrderPageDetails from './pages/OrderPageDetails.tsx';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 /* import Test from './testConcept/Test.tsx';
  */
   const router = createBrowserRouter(createRoutesFromElements(
@@ -39,12 +40,15 @@ const queryClient = new QueryClient() ;
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
    <StoreProvider>
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-     <RouterProvider router={router}/>
-       <ReactQueryDevtools initialIsOpen={false}/>
-      </QueryClientProvider>
-    </HelmetProvider>
+    <PayPalScriptProvider options={{clientId : "AVnrcbleEcnNsT-MBYvUXnVVYcQqdICZKcWwP7HOTRHIaagIaU8Lw6Puibnrj-IdBeaTCvm0G58xlEIL"}} deferLoading={true}>
+          <HelmetProvider>
+            <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}/>
+            <ReactQueryDevtools initialIsOpen={false}/>
+            </QueryClientProvider>
+          </HelmetProvider>
+    </PayPalScriptProvider>
+    
     </StoreProvider>  
   </StrictMode>,
 )

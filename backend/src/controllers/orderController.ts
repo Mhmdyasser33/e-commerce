@@ -61,7 +61,7 @@ export const updateOrderDetailsAfterPayment = async (req : Request , res : Respo
       }
 
       const updatedOrder = await order.save();
-     res.status(200).json({message : "order payed successfully" , updatedOrder})
+     res.status(200).json({message : "order payed successfully" , order : updatedOrder})
      return;
     }else{
       res.status(404).json({message : "Order Not Found"})
