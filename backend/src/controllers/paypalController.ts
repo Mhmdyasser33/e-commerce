@@ -2,7 +2,7 @@ import { Request , Response } from "express"
 
 export const handlePaypalPayment = (req : Request , res : Response)=>{
     try{
-        res.send({clientId : process.env.PAYPAL_CLIENT_ID || 'fakeTestPayment__$@$#'})
+        res.send({clientId :'fakeTestPayment__$@$#'})
         return;
 
     }catch(error){

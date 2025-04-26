@@ -9,7 +9,7 @@ export const useGetOrderDetailsQuery = (id : string)=> useQuery({
   queryKey : ['orders' , id],
   queryFn : async()=>{
     const { data } = await apiClient.get<Order>(`api/orders/${id}`) ;
-    return data ;   
+    return data; 
   }
 })
 export const useCreateOrderMutations = ()=> useMutation({
@@ -30,7 +30,7 @@ export const useCreateOrderMutations = ()=> useMutation({
 export const useGetPayPalClientIdQuery = ()=> useQuery({
   queryKey : ['paypal-clientId'],
   queryFn : async()=>{
-   const { data } = await apiClient.get<{clientId : string}>("/api/keys/paypal");
+   const { data } = await apiClient.get<{clientId : string}>("/api/keys/paypal"); 
    return data;
   }
 })

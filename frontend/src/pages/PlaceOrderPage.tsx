@@ -37,8 +37,9 @@ export default function PlaceOrderPage() {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       })
+      console.log(`order date is ${data.order}`);
         dispatch({type : "CLEAR_CART"})
-        // localStorage.removeItem("cartItems");
+         localStorage.removeItem("cartItems");
         navigate(`/order/${data.order._id}`)
     }catch(error){
       toast.error(getError(error as ApiError));
@@ -169,7 +170,6 @@ export default function PlaceOrderPage() {
                     'Place Order'
                    )}
                   </Button>
-
                   </div>
                 </Card.Body>
             </Card>

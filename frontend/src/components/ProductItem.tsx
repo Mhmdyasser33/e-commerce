@@ -24,7 +24,7 @@ export default function ProductItem({product} : {product : Product}) {
  }
 
   return (
-    <Card>
+    <Card className="mb-3" >
       <Link to={`/product/${product.slug}`}>
       <img src={product.image} alt={product.name} className="product-image"/>
       </Link>

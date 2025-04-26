@@ -50,5 +50,5 @@ createRoot(document.getElementById('root')!).render(
     </PayPalScriptProvider>
     
     </StoreProvider>  
-  </StrictMode>,
+  </StrictMode>,  
 )
