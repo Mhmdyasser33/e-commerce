@@ -84,7 +84,12 @@ export const userHistoryHandler = async(req : Request , res : Response)=>{
   try{
     const userOrders = await OrderModel.find({user : (req as any).user._id}) 
     if(!userOrders || userOrders.length === 0){
-      res.status(200).json({ message: "No orders found for this user.",orders : [] });
+      res
+        .status(200)
+        .json({
+          message: "This user has not placed any orders yet.",
+          orders: [],
+        });
       return 
     }
     res.status(200).json(userOrders);
