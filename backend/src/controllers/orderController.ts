@@ -21,7 +21,9 @@ export const createNewCustomerOrder = async (req: Request, res: Response) => {
         paymentMethod: req.body.paymentMethod,
         user: (req as any).user._id,
       });
-      res.status(201).json({ order: createdOrder });
+     const fullOrder = (await OrderModel.findById(createdOrder._id)).toObject();
+      console.log(JSON.stringify(fullOrder, null, 2))
+      res.status(201).json({ order: fullOrder });
       return;
     }
   } catch (error) {
@@ -80,23 +82,5 @@ export const updateOrderDetailsAfterPayment = async (
   }
 };
 
-export const userHistoryHandler = async(req : Request , res : Response)=>{
-  try{
-    const userOrders = await OrderModel.find({user : (req as any).user._id}) 
-    if(!userOrders || userOrders.length === 0){
-      res
-        .status(200)
-        .json({
-          message: "This user has not placed any orders yet.",
-          orders: [],
-        });
-      return 
-    }
-    res.status(200).json(userOrders);
-    return ;
-  }catch(err){
-     res.status(500).json({message : "Error in getting user history"}) ; 
-     return;
-  }
-}
+
 

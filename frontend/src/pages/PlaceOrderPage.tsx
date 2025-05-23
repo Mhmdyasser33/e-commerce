@@ -37,7 +37,7 @@ export default function PlaceOrderPage() {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       })
-      console.log(`order date is ${data.order}`);
+      console.log(`order date is =================== ${data}`);
         dispatch({type : "CLEAR_CART"})
          localStorage.removeItem("cartItems");
         navigate(`/order/${data.order._id}`)

@@ -13,7 +13,6 @@ import { ApiError } from "../types/ApiError";
 export default function OrderPageDetails() {
   const params = useParams();
   const { id: orderId } = params;
-
   const { data: order, error, refetch, isLoading } = useGetOrderDetailsQuery(orderId!);
   const { mutateAsync: payOrder } = usePayOrderMutation();
   const [{ isPending, isRejected }, dispatch] = usePayPalScriptReducer();

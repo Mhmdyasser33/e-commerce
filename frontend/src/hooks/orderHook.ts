@@ -45,6 +45,7 @@ export const useGeyUserOrderHistoryQuery = ()=> useQuery({
 queryKey : ['order-history'],
 queryFn : async()=>{
   const { data } = await apiClient.get<{Order: Order[] , message : string}>('/api/orders/history');
+  console.log(data);  
   return data;
   
 }
