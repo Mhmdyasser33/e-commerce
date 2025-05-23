@@ -56,6 +56,7 @@ function App() {
                 </Link>
                 {userInfo ? (
                   <NavDropdown title={userInfo.name} id="basic-nav-dropdown" align="end">
+                    <NavDropdown.Item as={Link} to={'/orderhistory'}>Order History</NavDropdown.Item>
                     <Link
                       className="dropdown-item"
                       to="#signout"

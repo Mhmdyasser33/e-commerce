@@ -38,6 +38,14 @@ export const usePayOrderMutation = ()=>  useMutation({
   mutationFn : async (details : {orderId : string })=>{
     const { data } = await apiClient.put<{message : string , order : Order}>(`/api/order/${details.orderId}/pay`,details);
     return data ; 
-
   }
+})
+
+export const useGeyUserOrderHistoryQuery = ()=> useQuery({
+queryKey : ['order-history'],
+queryFn : async()=>{
+  const { data } = await apiClient.get<Order[]>('/api/orders/history');
+  return data;
+  
+}
 })
