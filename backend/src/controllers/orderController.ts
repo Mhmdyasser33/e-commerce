@@ -1,3 +1,4 @@
+import orders from "routes/orders";
 import { OrderModel } from "../models/order";
 import { Product } from "../models/products";
 import { Request, Response } from "express";
@@ -82,9 +83,15 @@ export const updateOrderDetailsAfterPayment = async (
 export const userHistoryHandler = async(req : Request , res : Response)=>{
   try{
     const userOrders = await OrderModel.find({user : (req as any).user._id}) 
+    if(!userOrders || userOrders.length === 0){
+      res.status(200).json({ message: "No orders found for this user.",orders : [] });
+      return 
+    }
     res.status(200).json(userOrders);
+    return ;
   }catch(err){
      res.status(500).json({message : "Error in getting user history"}) ; 
+     return;
   }
 }
 
