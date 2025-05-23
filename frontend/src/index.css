@@ -85,3 +85,21 @@ a{
   border-bottom: 0.2rem solid #f08000;
   color : #f08000;
 }
+
+.cart-icon-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.6s ease;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.cart-icon-container:hover {
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
