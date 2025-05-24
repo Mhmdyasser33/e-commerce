@@ -40,13 +40,10 @@ export const usePayOrderMutation = ()=>  useMutation({
     return data ; 
   }
 })
-
-export const useGeyUserOrderHistoryQuery = ()=> useQuery({
-queryKey : ['order-history'],
-queryFn : async()=>{
-  const { data } = await apiClient.get<{Order: Order[] , message : string}>('/api/orders/history');
-  console.log(data);  
-  return data;
-  
-}
+export const useGetOrderHistoryQuery = ()=> useQuery({
+  queryKey : ['order-history'],
+  queryFn : async()=>{
+    const { data } = await apiClient.get<Order[]>('/api/orders/history');
+    return data ;
+  }
 })

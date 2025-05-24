@@ -82,5 +82,14 @@ export const updateOrderDetailsAfterPayment = async (
   }
 };
 
-
+  export const getOrderHistory = async(req : Request , res : Response)=>{
+    try{
+      const userOrders = await OrderModel.find({user : (req as any).user._id})
+      res.status(200).json(userOrders);
+      return ;
+    }catch(err){
+    res.status(500).json({message : "Error in getting userOrdersHistory"});
+    return;
+    }
+  }
 
