@@ -82,14 +82,38 @@ export const updateOrderDetailsAfterPayment = async (
   }
 };
 
-  export const getOrderHistory = async(req : Request , res : Response)=>{
-    try{
-      const userOrders = await OrderModel.find({user : (req as any).user._id})
-      res.status(200).json(userOrders);
-      return ;
-    }catch(err){
-    res.status(500).json({message : "Error in getting userOrdersHistory"});
-    return;
+  export const getOrderHistory = async (
+    req: Request,
+    res: Response
+  ): Promise<void> => {
+    try {
+      const userId = (req as any).user?._id;
+
+      if (!userId) {
+        res
+          .status(401)
+          .json({ message: "Unauthorized: User not found in request" });
+        return;
+      }
+
+      const userOrders = await OrderModel.find({ user: userId });
+
+      if (!userOrders || userOrders.length === 0) {
+        res.status(200).json({
+          orders: [],
+          message: "You haven't placed any orders yet.",
+        });
+        return;
+      }
+
+      res.status(200).json({
+        orders: userOrders,
+        message: "Order history retrieved successfully.",
+      });
+    } catch (err) {
+      console.error("Error fetching order history:", err);
+      res.status(500).json({ message: "Failed to retrieve order history" });
     }
-  }
+  };
+
 
