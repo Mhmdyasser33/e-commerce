@@ -19,7 +19,7 @@ A modern full-stack e-commerce application built with React, TypeScript, Express
 - **Database**: MongoDB with Mongoose ODM
 - **Authentication**: JWT-based user authentication
 - **Order Processing**: Complete order lifecycle management
-- **Sample Data**: Pre-populated products and users for development [8](#0-7) 
+- **Sample Data**: Pre-populated products and users for development
 
 ## 🛠 Tech Stack
 
