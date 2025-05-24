@@ -5,13 +5,13 @@ A modern full-stack e-commerce application built with React, TypeScript, Express
 ## 🚀 Features
 
 ### Frontend Features
-- **Product Catalog**: Browse and search products with detailed views [1](#0-0) 
-- **Shopping Cart**: Add, remove, and manage cart items with persistent storage [2](#0-1) 
-- **User Authentication**: Secure login and registration system [3](#0-2) 
-- **Checkout Process**: Multi-step checkout with shipping and payment [4](#0-3) 
-- **Order Management**: View order history and track order status [5](#0-4) 
-- **PayPal Integration**: Secure payment processing [6](#0-5) 
-- **Dark/Light Theme**: Toggle between themes with persistence [7](#0-6) 
+- **Product Catalog**: Browse and search products with detailed views
+- **Shopping Cart**: Add, remove, and manage cart items with persistent storage 
+- **User Authentication**: Secure login and registration system
+- **Checkout Process**: Multi-step checkout with shipping and payment 
+- **Order Management**: View order history and track order status
+- **PayPal Integration**: Secure payment processing
+- **Dark/Light Theme**: Toggle between themes with persistence 
 - **Responsive Design**: Bootstrap-based responsive UI
 
 ### Backend Features
