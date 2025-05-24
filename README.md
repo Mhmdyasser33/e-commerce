@@ -1,5 +1,3 @@
-Based on the codebase context, you're asking me to create a comprehensive README.md file for the **RegalMart e-commerce application** (repository: `Mhmdyasser33/e-commerce`). This is a full-stack TypeScript application with a React frontend and Express backend.
-
 # RegalMart E-commerce Platform
 
 A modern full-stack e-commerce application built with React, TypeScript, Express, and MongoDB. RegalMart provides a complete online shopping experience with user authentication, shopping cart functionality, order management, and PayPal payment integration.
